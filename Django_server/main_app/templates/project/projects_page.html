@@ -1,0 +1,28 @@
+
+{% extends "base.html" %} {% load static %}{% load i18n %}
+{% block title %} Projects | 1e9USD {% endblock title %}
+{% block static_css %}
+<link rel="stylesheet" href="{% static 'mybulma/css/course_page.css' %}">
+<link rel="stylesheet" href="{% static 'mybulma/css/adaptive.css' %}">
+<link rel="stylesheet" href="{% static 'mybulma/css/mystyles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="menu_title">
+<div class="container" style="margin-bottom: 20px;">
+  <h1 class="title">
+    {% trans 'Title text' %}
+  </h1>
+</div>
+</div>
+{% if object_list %}
+<div class="card-list ">   
+  {% include 'includes/card_project.html' %}      
+</div>
+{% else %}
+<h3 class="title has-text-centered mt-5">
+  {% trans 'No text' %}  <br><br><br><br><br><br>
+</h3>
+  {%endif%}
+{%endblock%}
+{% block js %}{%endblock%}

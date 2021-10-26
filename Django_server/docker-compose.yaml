@@ -1,0 +1,40 @@
+version: '3.9'
+
+volumes:
+  postgres_data_web_med_plist:
+  static_volume_web_med_plist:
+  media_volume_web_med_plist:
+
+services:
+  db_web_med_plist:
+    image: postgres:12.4
+    restart: always
+    volumes:
+      - postgres_data_web_med_plist:/var/lib/postgresql/data/
+    env_file:
+      - .env
+
+  web_med_plist_django:
+    image: spacex038i/web_med_plist_site:v0.0.1
+    restart: always
+    volumes:
+      - static_volume_web_med_plist:/code_web_med_plist/static/
+      - media_volume_web_med_plist:/code_web_med_plist/media/
+    expose:
+      - 8004
+    depends_on:
+      - db_web_med_plist
+    env_file:
+      - .env
+  
+  app:
+    image: nginx:1.19.6-alpine
+    depends_on:
+      - web_med_plist_django
+    restart: always
+    ports:
+      - "127.0.0.1:1114:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d/
+      - static_volume_web_med_plist:/code_web_med_plist/static/
+      - media_volume_web_med_plist:/code_web_med_plist/media/

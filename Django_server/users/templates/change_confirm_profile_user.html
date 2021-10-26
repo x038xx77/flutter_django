@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% csrf_token %} {% load static %}{% load i18n %}
+{% block title %}{% trans 'Редактировать профиль' %} {%endblock%}
+{% block static_css %}
+{% endblock %}
+{% block menu %}
+    {% include "menu.html" %}
+{%endblock%}
+{% block content %}
+{% csrf_token %}
+<h3 class="title has-text-black">{% trans 'Редактировать профиль' %}</h3>       
+<div class="container  ">
+    <div class="column is-4 is-offset-4">
+        <p >{% trans 'Вы точно хотите изменить профиль' %} "{{user}}"?</p>           
+        <div class="has-text-centered" style="margin-top: 100px; margin-bottom: 150px;">
+                        <a href="{% url 'users_edit' user.pk %}">
+                            <button class="button is-info" value="Confirm">{% trans 'Да' %}</button>
+                        </a>
+                        <a href="{% url 'index' %}">
+                            <button class="button is-info">{% trans 'Нет' %}</button>
+                        </a>
+        </div>    
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% load i18n %}
+<footer class="footer has-background-black-bis">
+  <div class="container">
+    <p class="title">
+      1e9usd.com <i class="is-size-5 fa fa-copyright fa-lg" aria-hidden="true"> 2021</i>  
+    </p>
+    <div class="content has-text-justified">
+      <div class="soc has-text-centered">
+        <a href="#"><i class="fa fa-telegram fa-lg" aria-hidden="true"></i></a>
+        <a href="https://facebook.com/1e9usd"><i class="fa fa-instagram fa-lg" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa fa-whatsapp fa-lg" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/1e9USD"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
+      </div>
+      <p class="is-size-7">
+        {% trans 'Посещая сайт' %} <a class="has-text-white-ter" href="http://1e9USD.com">www.1e9USD.com</a>, {% trans 'вы предоставляете согласие на обработку данных о посещении вами сайта'%} <a class="has-text-white-ter" href="http://1e9USD.com">www.1e9USD.com</a> {% trans '(данные cookies и иные пользовательские данные), сбор которых автоматически осуществляется Администрацией, почтовый адрес: Россия, 664005, Иркутская область, г. Иркутск, 2-я Железнодорожная 30-54, Юридический адрес: Россия, 664005, Иркутская область, г. Иркутск, 2-я Железнодорожная 30-54) на условиях' %} <a class="has-text-white-ter" href="http://1e9usd.com/confidential/">{% trans 'Политики конфиденциальности' %}</a>. {% trans 'Компания также может использовать указанные данные для их последующей обработки системами Google Analytics, Яндекс.Метрика, MyTarget, Monkey, Mindbox, RoiStat, AmoCRM и др., а также передавать / привлекать к обработке данных третьих лиц, перечень которых указан в' %} <a class="has-text-white-ter" href="https://1e9USD.com/user_agreement/">{% trans 'Пользовательском соглашении' %}</a>. {% trans 'Обработка осуществляется с целью функционирования сайта https://1e9USD.com и с целью продвижения Проектов и их Компаний инициаторов (авторов проектов)' %}.
+        <br>
+      </p>
+      {% include 'includes/translation_template.html'%}
+    </div>
+  </div>
+</footer>
+<script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
