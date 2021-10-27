@@ -41,9 +41,12 @@ AUTH_USER_MODEL = 'users.User'
 
 INSTALLED_APPS = [
     'api',
+    'chat',
     'main_app',
     'sendemail',
     'users',
+    'src.videoch_chat',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -69,7 +72,6 @@ MIDDLEWARE = MIDDLEWARE = [
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
-    
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -104,6 +106,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'web_med_plist.wsgi.application'
+ASGI_APPLICATION = "web_med_plist.asgi.application"
 
 
 # Database
@@ -146,7 +149,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'ru'
+
 gettext = lambda s: s
+
 LANGUAGES = (
     ('ru', gettext('Russian')),
     ('en', gettext('English')),
@@ -256,11 +261,35 @@ CACHES = {
     }
 }
 
+
 JWT_AUTH = {
- 
     'JWT_VERIFY': True,
     'JWT_VERIFY_EXPIRATION': True,
     'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=3000),
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
- 
 }
+
+
+REDIS_HOST = os.environ.get('REDIS_HOST', 'webrtc-redis-server')
+REDIS_PORT = os.environ.get('REDIS_PORT', '6379')
+
+# CHANNEL_LAYERS = {
+#     'default': {
+#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
+#         'CONFIG': {
+#             "hosts": [(REDIS_HOST, REDIS_PORT)],
+#         },
+#     },
+# }
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
+
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:8004",
+    "http://127.0.0.1:8004"
+]

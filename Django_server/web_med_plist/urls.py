@@ -32,6 +32,8 @@ urlpatterns = [
     url(r'^i18n/', include('django.conf.urls.i18n')),
     path('', include('users.urls')),
     path('api/', include('api.urls')),
+    path('', include('chat.urls')),
+    path('', include('src.videoch_chat.urls')),
 ]
 
 urlpatterns += i18n_patterns(

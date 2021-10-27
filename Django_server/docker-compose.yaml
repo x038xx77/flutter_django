@@ -13,6 +13,9 @@ services:
       - postgres_data_web_med_plist:/var/lib/postgresql/data/
     env_file:
       - .env
+  
+  webrtc-redis-server:
+    image: "redis:alpine"
 
   web_med_plist_django:
     image: spacex038i/web_med_plist_site:v0.0.1
@@ -24,9 +27,10 @@ services:
       - 8004
     depends_on:
       - db_web_med_plist
+      - webrtc-redis-server
     env_file:
       - .env
-  
+    
   app:
     image: nginx:1.19.6-alpine
     depends_on:
@@ -38,3 +42,4 @@ services:
       - ./nginx:/etc/nginx/conf.d/
       - static_volume_web_med_plist:/code_web_med_plist/static/
       - media_volume_web_med_plist:/code_web_med_plist/media/
+    
