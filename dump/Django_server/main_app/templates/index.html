@@ -1,0 +1,30 @@
+
+{% extends "base.html" %} {% load static %}{% load i18n %}
+{% block title %} {% trans 'Главная' %} {% endblock title %}
+{% block static_css %}
+<link rel="stylesheet" href="{% static 'mybulma/css/mystyles.css' %}">
+<link rel="stylesheet" href="{% static 'mybulma/css/index_styles.css' %}">
+<link rel="stylesheet" href="{% static 'mybulma/css/adaptive.css' %}">
+{% endblock %}
+{% block content %} 
+     
+<section class="wrapper menu_title">  
+  {%if is_counter_index %}
+  <span> Количество просмотров - {{counter_index}} </span>
+  {%endif%}
+   <div class="places__cards ">
+       <div class="places__card places__card_size_lg">
+        <h1 class="title">{% trans 'Main Page' %}</h1>
+           <h2 class="places__card-title">
+               {% trans 'Then text' %}
+           </h2>
+           <p class="places__card-text">
+               <a href="{% url 'projects' %}" class="nav__link link"><button type="submit" class="buttom-form__submit button_index">{% trans 'Вперёд' %}</button></a>
+           </p>
+       </div>
+            <img src="{% static 'images/13465.jpg' %}" class="card__image" style="margin-top: 0; height: auto;">
+       </div>
+   </div>
+</section>
+{%endblock%}
+{% block js %}{%endblock%}

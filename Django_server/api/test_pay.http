@@ -33,3 +33,7 @@ content-type: application/json
   "username": "admin",
   "password": "HkhG7thb"
 }
+
+###
+
+GET ws://llgall.ga/main_view/test

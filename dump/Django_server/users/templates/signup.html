@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% load static %} {% load i18n %}
+{% csrf_token %}
+{% block title %}{% trans 'Регистрация' %}{%endblock%}
+{% block static_css %}
+<link rel="stylesheet" href="{% static 'bulma/css/bulma.min.css' %}">
+<link rel="stylesheet" href="{% static 'mybulma/css/lesson_page.css' %}">
+<link rel="stylesheet" href="{% static 'mybulma/css/adaptive.css' %}">
+<link rel="stylesheet" href="../../static/mybulma/css/mystyles.css">
+{% endblock %}
+{% block menu %} 
+    {% include "menu.html" %} 
+{%endblock%}
+{% block content %}
+    {% include "includes/reg.html" %}
+{%endblock%}

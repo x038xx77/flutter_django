@@ -272,22 +272,31 @@ JWT_AUTH = {
 
 REDIS_HOST = os.environ.get('REDIS_HOST', 'webrtc-redis-server')
 REDIS_PORT = os.environ.get('REDIS_PORT', '6379')
-
-# CHANNEL_LAYERS = {
-#     'default': {
-#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
-#         'CONFIG': {
-#             "hosts": [(REDIS_HOST, REDIS_PORT)],
-#         },
-#     },
-# }
+IS_REDIS = os.environ.get('IS_REDIS')
 
 
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
+if DEBUG:
+    HOST_NAME = 'localhost'
+    HOST_PORT = 6379
+else:
+    HOST_NAME = REDIS_HOST
+    HOST_PORT = REDIS_PORT
+
+if IS_REDIS:
+    CHANNEL_LAYERS = {
+        'default': {
+            'BACKEND': 'channels_redis.core.RedisChannelLayer',
+            'CONFIG': {
+                "hosts": [(HOST_NAME, HOST_PORT)],
+            },
+        },
     }
-}
+else:
+    CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": "channels.layers.InMemoryChannelLayer"
+        }
+    }
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8004",

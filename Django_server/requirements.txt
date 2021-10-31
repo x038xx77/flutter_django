@@ -63,3 +63,5 @@ python-memcached==1.59
 django-redis==5.0.0
 channels==3.0.4
 channels-redis==3.3.1
+daphne==3.0.2
+# supervisor==4.2.2

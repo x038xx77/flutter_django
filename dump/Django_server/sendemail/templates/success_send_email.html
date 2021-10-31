@@ -1,0 +1,24 @@
+
+{% extends "base.html" %} {% load static %}{% load i18n %}
+{% block title %} E-mail|1E9USD {% endblock title %}
+{% block static_css %}
+
+<link rel="stylesheet" href="{% static 'mybulma/css/mystyles.css' %}">
+<link rel="stylesheet" href="{% static 'mybulma/css/index_styles.css' %}">
+<link rel="stylesheet" href="{% static 'mybulma/css/adaptive.css' %}">
+
+{% endblock %}
+
+{% block content %} 
+<div class="content ml-3">
+    
+   <p class="content title">Электронная почта успешно отправлена.</p><br>
+   <p class="content subtitle has-text-centered">Спасибо!</p><br><br>
+  
+ </div>
+<div class="has-text-centered">
+   <a href="{% url 'index'%}">
+       <button class="button is-info mb-3">Перейти на главную</button>
+   </a>
+</div>
+{% endblock %}

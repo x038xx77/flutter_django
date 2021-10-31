@@ -71,7 +71,7 @@ btnJoin.addEventListener('click', () => {
         wsStart = 'wss://';
     }
 
-    var endPoint = wsStart + loc.host + loc.pathname;
+    var endPoint = wsStart + loc.host + loc.pathname + 'test';
 
     console.log('endPoint:', endPoint);
 
